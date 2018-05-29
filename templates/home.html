@@ -1,0 +1,47 @@
+<div class = "container" ng-controller = "homeController" >		
+		<!-- <div>
+			<input type="search" ng-model = "searchBox">
+		</div> -->
+		<br><br>
+		<div id="custom-search-input">
+            <div class="input-group col-md-4">
+                <input type="text" class="  search-query form-control" placeholder="Search" ng-model = "searchBox" />
+              	<span class="input-group-btn">
+                	<button class="btn btn-danger" type="button">
+               			<span class=" glyphicon glyphicon-search"></span>
+                	</button>
+                </span>
+            </div>
+        </div>
+        <br><br>
+
+        <div align="Center">
+			<table class="col-md-4">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>URL</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat = "photo in photos.result | filter : searchBox | startFrom : (currentPage-1)*pageSize | limitTo : pageSize">
+						<td>{{ photo.title }}</td>
+						<td>
+							<img ng-src="{{ photo.url }}" height = "50dp" width = "50dp">
+						</td>
+						<td>
+							<a href="#">
+          						<span class="glyphicon glyphicon-trash"></span>
+        					</a>
+						</td>					
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<pagination total-items = "photos.result.length" ng-model = "currentPage" items-per-page = "pageSize">
+			</pagination>
+		<div>
+			
+		</div>
+	</div>
